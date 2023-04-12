@@ -1,3 +1,6 @@
+
+let temaConfigurado = JSON.parse(localStorage.getItem('tema')) || 'dark';
+cambiarTema(temaConfigurado);
 document
   .getElementById("btn_themeDark")
   .addEventListener("click", () => cambiarTema("dark"));
@@ -13,4 +16,7 @@ function cambiarTema(color) {
     ? (document.getElementById("icon_theme").className = "bi bi-moon-stars")
     : (document.getElementById("icon_theme").className =
         "bi bi-brightness-high-fill");
+
+        //guardar color en localstorage
+        localStorage.setItem('tema', JSON.stringify(color) );
 }
