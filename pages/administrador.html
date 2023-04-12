@@ -4,9 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="CRUD Peliculas" />
-    <meta name="keywords" content="CRUD, Peliculas" />
-    <meta name="author" content="Aixa Macarena Filsinger" />
+    <!-- agregar las 3 metas -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -18,7 +16,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css"
     />
     <link rel="stylesheet" href="../css/style.css" />
-    <title>CRUD Peliculas</title>
+    <title>Peliculas</title>
   </head>
   <body data-bs-theme="dark">
     <header>
@@ -55,37 +53,270 @@
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <i class="bi bi-moon-stars" id="icon_theme"></i>
+                  <i class="bi bi-moon-stars-fill" id="iconTheme"></i>
                 </button>
                 <ul class="dropdown-menu">
                   <li>
-                    <button class="dropdown-item" id="btn_themeLigth">
-                      <i class="bi bi-brightness-high-fill"></i> Ligth
+                    <button class="dropdown-item" id="btnThemeLight">
+                      <i class="bi bi-brightness-high-fill"></i> Light
                     </button>
                   </li>
                   <li>
-                    <button class="dropdown-item" id="btn_themeDark">
-                      <i class="bi bi-moon-stars"></i> Dark
+                    <button class="dropdown-item" id="btnThemeDark">
+                      <i class="bi bi-moon-stars-fill"></i> Dark
                     </button>
                   </li>
                 </ul>
               </li>
               <li class="nav-item">
-                <button class="nav-link active" aria-current="page">
-                  Logout
-                </button>
+                <button class="nav-link">Logout</button>
               </li>
             </ul>
           </div>
         </div>
       </nav>
     </header>
-    <main class="container">
-      <h1 class="display-4 text-center my-5">Lista de peliculas</h1>
-      <hr />
+    <main class="container my-5">
+      <section>
+        <h1 class="display-4 text-center">Administrador de Peliculas</h1>
+        <hr />
+        <p>
+          Opciones:
+          <button class="btn btn-outline-primary" id="btnAgregar">
+            <i class="bi bi-clipboard-plus-fill"></i>
+          </button>
+        </p>
+      </section>
+      <section class="my-5">
+        <h2 class="display-6">Lista de Pelis</h2>
+        <hr />
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Imagen</th>
+                <th>Genero</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>1</th>
+                <td>Suzume no tojimari</td>
+                <td class="text-truncate">
+                  Una joven de 17 años llamada Suzume ayuda a un misterioso
+                  joven a cerrar las puertas de otro mundo que están provocando
+                  desastres en todo Japón.
+                </td>
+                <td class="text-truncate">
+                  https://pics.filmaffinity.com/suzume_no_tojimari-813023859-large.jpg
+                </td>
+                <td>Animación. Fantástico. Aventuras. Acción</td>
+                <td>
+                  <button
+                    class="bi bi-pencil-square btn btn-warning"
+                    id="btnEditar"
+                  ></button>
+                  <button class="bi bi-x-square btn btn-danger"></button>
+                </td>
+              </tr>
+              <tr>
+                <th>2</th>
+                <td>Grease: Rise of the Pink Ladies</td>
+                <td class="text-truncate">
+                  Serie de TV (2023-). 1 temporada. 10 episodios. En 1954,
+                  cuatro chicas marginadas se unen y desafían la moral social en
+                  el instituto Rydell decididas a divertirse a su manera en una
+                  nueva era de coches rápidos, pelo engominado y rock and roll.
+                  Precuela del clásico musical de 1978.
+                </td>
+                <td class="text-truncate">
+                  https://pics.filmaffinity.com/grease_rise_of_the_pink_ladies-814803348-large.jpg
+                </td>
+                <td>
+                  Serie de TV. Musical. Comedia. Romance | Colegios &
+                  Universidad. Baile
+                </td>
+                <td>
+                  <button class="bi bi-pencil-square btn btn-warning"></button>
+                  <button class="bi bi-x-square btn btn-danger"></button>
+                </td>
+              </tr>
+              <tr>
+                <th>3</th>
+                <td>Under the Queen's Umbrella</td>
+                <td class="text-truncate">
+                  Una reina temperamental intenta controlar a sus problemáticos
+                  hijos y convertir a uno de ellos en el próximo rey de Joseon
+                  mientras sus rivales le disputan el trono.
+                </td>
+                <td class="text-truncate">
+                  https://pics.filmaffinity.com/under_the_queen_s_umbrella-379737655-large.jpg
+                </td>
+                <td>Serie de TV. Drama | Drama de época</td>
+                <td>
+                  <button class="bi bi-pencil-square btn btn-warning"></button>
+                  <button class="bi bi-x-square btn btn-danger"></button>
+                </td>
+              </tr>
+              <tr>
+                <th>4</th>
+                <td>Crash Course in Romance</td>
+                <td class="text-truncate">
+                  Nam Haeng-sun fue atleta nacional. Ahora regenta una tienda de
+                  guarniciones. Tiene una personalidad superpositiva y una
+                  resistencia sin límites. Ella toma otro giro y entra en el
+                  campo de la educación privada, que es para los estudiantes que
+                  se preparan para su examen de ingreso a la universidad.
+                  Inesperadamente, Nam Haeng-Sun se involucra con Choi Chi-yeol,
+                  un popular profesor que trabaja con ella.
+                </td>
+                <td class="text-truncate">
+                  https://pics.filmaffinity.com/crash_course_in_romance-906186505-large.jpg
+                </td>
+                <td>Serie de TV. Comedia. Romance</td>
+                <td>
+                  <button class="bi bi-pencil-square btn btn-warning"></button>
+                  <button class="bi bi-x-square btn btn-danger"></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section
+        class="modal fade"
+        id="modalAgregar"
+        tabindex="-1"
+        aria-labelledby="agregarModalLabel"
+        aria-hidden="true"
+      >
+        <article class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="agregarModalLabel">
+                Administrar Serie
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form id="formAdministrarPelicula">
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label"
+                    >Código</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="recipient-name"
+                    placeholder="123"
+                    disabled
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="col-form-label">Titulo *</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="recipient-name"
+                    required
+                    placeholder="Ej: Robotech"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="col-form-label">Descripcion *</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="recipient-name"
+                    required
+                    placeholder="Ej: Lorem ipsum dolor sit amet"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="col-form-label">Imagen *</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="recipient-name"
+                    required
+                    placeholder="Ej: http://127.0.0.1:5500/pages/administrador.html"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="col-form-label">Genero *</label>
+                  <select
+                    class="form-select"
+                    aria-label="Elegir Genero"
+                    required
+                  >
+                    <option selected>Seleccione una opcion</option>
+                    <option value="1">Aventura</option>
+                    <option value="2">Accion</option>
+                    <option value="3">Drama</option>
+                    <option value="4">Terror</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label class="col-form-label">Año</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="recipient-name"
+                    placeholder="Ej: 2023"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="col-form-label">Duración</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="recipient-name"
+                    placeholder="Ej: 93 min"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="col-form-label">País</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="recipient-name"
+                    placeholder="Ej: Argentina"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="col-form-label"
+                    >Reparto
+                    <span class="text-muted text-sm"
+                      >(Cada actor separado por ,)</span
+                    ></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="recipient-name"
+                    placeholder="Ej: Chris Pratt, Anya Taylor-Joy, Charlie Day, Jack Black"
+                  />
+                </div>
+                <div class="justify-content-start">
+                  <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </article>
+      </section>
     </main>
     <footer class="bg-dark text-light text-center py-4">
-      <p>&copy;Todos los derechos reservados</p>
+      <p>&copy; Todos los derechos reservados</p>
     </footer>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
@@ -93,5 +324,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="../js/app.js"></script>
+    <script src="../js/administrador.js" type="module"></script>
   </body>
 </html>
