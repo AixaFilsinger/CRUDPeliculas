@@ -1,0 +1,1 @@
+import Pelicula from "./classPelicula.js";
