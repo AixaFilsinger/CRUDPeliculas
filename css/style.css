@@ -9,3 +9,11 @@ main{
 .table{
     table-layout: fixed;
 }
+.warnings{
+    color: darkred;
+    font-style: italic;
+    width: 150px;
+    text-align: center;
+    margin: auto;
+    padding: 10px;
+}

@@ -226,9 +226,11 @@
                   <input
                     type="text"
                     class="form-control"
-                    id="recipient-name"
+                    id="modal_Titulo"
                     required
                     placeholder="Ej: Robotech"
+                    maxlength="150"
+                    min="3"
                   />
                 </div>
                 <div class="mb-3">
@@ -236,9 +238,12 @@
                   <input
                     type="text"
                     class="form-control"
-                    id="recipient-name"
+                    id="modal_Descripcion"
                     required
                     placeholder="Ej: Lorem ipsum dolor sit amet"
+                    minlength="4"
+                    maxlength="300"
+
                   />
                 </div>
                 <div class="mb-3">
@@ -257,6 +262,7 @@
                     class="form-select"
                     aria-label="Elegir Genero"
                     required
+                    
                   >
                     <option selected>Seleccione una opcion</option>
                     <option value="1">Aventura</option>
@@ -268,10 +274,12 @@
                 <div class="mb-3">
                   <label class="col-form-label">Año</label>
                   <input
-                    type="text"
+                    type="number"
                     class="form-control"
-                    id="recipient-name"
+                    id="modal_Año"
                     placeholder="Ej: 2023"
+                    min="4"
+                    max="4"
                   />
                 </div>
                 <div class="mb-3">
@@ -281,6 +289,8 @@
                     class="form-control"
                     id="recipient-name"
                     placeholder="Ej: 93 min"
+                    min="4"
+                    max="8"
                   />
                 </div>
                 <div class="mb-3">
@@ -288,8 +298,10 @@
                   <input
                     type="text"
                     class="form-control"
-                    id="recipient-name"
+                    id="modal_Pais"
                     placeholder="Ej: Argentina"
+                    minlength="4"
+                    maxlength="57"
                   />
                 </div>
                 <div class="mb-3">
@@ -304,11 +316,15 @@
                     class="form-control"
                     id="recipient-name"
                     placeholder="Ej: Chris Pratt, Anya Taylor-Joy, Charlie Day, Jack Black"
+                    minlength="4"
+                    maxlength="500"
                   />
                 </div>
                 <div class="justify-content-start">
                   <button type="submit" class="btn btn-primary">Enviar</button>
+                  <p class="warnings" id="warnings"></p>
                 </div>
+                
               </form>
             </div>
           </div>

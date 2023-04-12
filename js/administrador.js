@@ -2,6 +2,9 @@ import Pelicula from "./classPelicula.js";
 
 const btnEditar = document.querySelector('#btnEditar');
 const btnAgregar = document.querySelector('#btnAgregar');
+const modal_Titulo = document.getElementById('modal_Titulo');
+const modal_Descripcion = document.getElementById('modal_Descripcion');
+const modal_Pais = document.getElementById('modal_Pais');
 const formularioPelicula = document.getElementById('formAdministrarPelicula');
 
 btnEditar.addEventListener('click', crearPeli);
@@ -26,7 +29,14 @@ function crearPeli(){
     function cargarPelicula(e){
         e.preventDefault();
         console.log('creando la pelicula...')
+        
+
         //crear modal
         modalPelicula.hide();
+        /*let warnings = "";
+        let entrar = false;
+        if(modal_Titulo < 3 || modal_Titulo > 150 ){
+            warnings += ``
+        }*/
     }
     
