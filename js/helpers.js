@@ -39,6 +39,19 @@ function validarGenero(texto){
         return false;
     }
 }
+//agregar la validacion año 1985 - (año actual +1)
+function validarAnio(value){
+    console.log(value)
+    const anioActual = new Date().getFullYear();
+    if(value >= 1985 && value <= (anioActual+1)){
+        return true
+    }
+    else{
+        return false
+    }
+}
+//validacion para el pais
+//validacion para el Reparto
 
 export function sumarioValidaciones(titulo, descripcion, imagen, duracion, genero){
     let resumen = '';
@@ -58,6 +71,15 @@ export function sumarioValidaciones(titulo, descripcion, imagen, duracion, gener
     }
     if(!validarGenero(genero)){
         resumen += 'Seleccione un genero de la lista de opciones <br>'
+    }
+    if(anio.length !== 0 && !validarAnio(parseInt(anio))){
+        resumen += `Ingrese un año correcto (entre 1985 y como maximo el proximo año ${new Date().getFullYear()+1}) <br>`
+    }
+    if(pais.length !== 0 && !cantidadCaracteres(pais,4,57)){
+        resumen += `Ingrese un pais correcto (debe tener un rango entre 4 y 57 caracteres como maximo)<br>`
+    }
+    if(reparto.length !== 0 && !cantidadCaracteres(reparto,4,500)){
+        resumen += `Ingrese un texto correcto (debe tener un rango entre 4 y 500 caracteres como maximo) separados por coma<br>`
     }
     if(resumen.length !== 0){
 
