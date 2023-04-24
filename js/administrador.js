@@ -1,5 +1,5 @@
 import Pelicula from "./classPelicula.js";
-import { cantidadCaracteres } from "./helpers.js";
+import { sumarioValidaciones } from "./helpers.js";
 
 const btnEditar = document.querySelector('#btnEditar');
 const btnAgregar = document.querySelector('#btnAgregar');
@@ -12,9 +12,12 @@ const genero = document.getElementById('genero');
 const pais = document.getElementById('pais');
 const reparto = document.getElementById('reparto');
 const imagen = document.getElementById('imagen');
+const msjFormulario = document.getElementById('msjFormulario');
 
 const formularioPelicula = document.getElementById('formAdministrarPelicula');
-let listapeliculas = [];
+let listapeliculas = JSON.parse(localStorage.getItem('listapeliculas')) || [];
+console.log(listapeliculas)
+
 
 btnEditar.addEventListener('click', crearPeli);
 btnAgregar.addEventListener('click', mostrarModalPeli);
@@ -37,12 +40,32 @@ function crearPeli(){
     
     function cargarPelicula(e){
         e.preventDefault();
-        console.log('creando la pelicula...')
+
+        let sumario = sumarioValidaciones(titulo.value, descripcion.value, imagen.value, duracion.value, genero.value)
         //validar los datos
-        if(cantidadCaracteres(titulo.value, 3, 100))
+        if(sumario.length === 0){
+            console.log('creando la pelicula...')
+             
+        }else{
+            msjFormulario.className = 'alert alert-danger mt-3';
+            msjFormulario.innerHTML = sumario ;
+        }
         //crear pelicula
+        let nuevaPeli = new Pelicula(titulo.value,descripcion.value, imagen.value, genero.value, anio.value, duracion.value, pais.value, reparto.value);
+        listapeliculas.push(nuevaPeli);
+       
         //almacenar la peli en Localstorage
+        guardarEnLocalStorage();
+        //limpiar el formulario
+        limpiarFormularioPeliculas();
         //crear modal
-        modalPelicula.hide();
+       modalPelicula.hide();
+    }
+    function guardarEnLocalStorage(){
+        localStorage.setItem('listapeliculas', JSON.stringify(listapeliculas)); //para objetos Publicos funciona
+    }
+    
+    function limpiarFormularioPeliculas(){
+        formularioPelicula.reset();
     }
     

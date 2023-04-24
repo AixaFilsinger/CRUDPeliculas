@@ -10,7 +10,7 @@ export default class Pelicula {
     #reparto;
     #estado;
     constructor(titulo, descripcion, imagen, genero, anio, duracion, pais, reparto){
-        this.#codigo =0;
+        this.#codigo = uuidv4();
         this.#titulo = titulo;
         this.#descripcion = descripcion;
         this.#imagen = imagen;
@@ -85,4 +85,18 @@ export default class Pelicula {
     setEstado(estado) {
         this.#estado = estado;
     }
+    //stringify accede a este medoto
+    toJSON(){
+        return {
+            codigo: this.codigo,
+            titulo: this.titulo,
+            descripcion: this.descripcion,
+            imagen: this.imagen,
+            genero: this.genero,
+            duracion: this.duracion,
+            pais: this.pais,
+            reparto: this.reparto,
+            estado: this.estado
+        }
+}
 }
