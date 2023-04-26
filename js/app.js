@@ -1,5 +1,6 @@
 
 let temaConfigurado = JSON.parse(localStorage.getItem('tema')) || 'dark';
+
 cambiarTema(temaConfigurado);
 document
   .getElementById("btn_themeDark")
@@ -20,3 +21,4 @@ function cambiarTema(color) {
         //guardar color en localstorage
         localStorage.setItem('tema', JSON.stringify(color) );
 }
+
