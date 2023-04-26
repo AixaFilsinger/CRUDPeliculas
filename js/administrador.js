@@ -32,6 +32,7 @@ if (!listapeliculas) {
   listapeliculas = JSON.parse(listapeliculas).map(
     (pelicula) =>
       new Pelicula(
+        pelicula.codigo,
         pelicula.titulo,
         pelicula.descripcion,
         pelicula.imagen,
@@ -67,7 +68,7 @@ function crearFila(pelicula, indice) {
     <td>${pelicula.genero}</td>
     <td>
         <button class="bi bi-pencil-square btn btn-warning" id="btnEditar"></button>
-        <button class="bi bi-x-square btn btn-danger" onclick="borrarPelicula()"></button>
+        <button class="bi bi-x-square btn btn-danger" onclick="borrarPelicula('${pelicula.codigo}')"></button>
     </td>
   </tr>`;
 }
@@ -107,6 +108,7 @@ function crearPeli(){
           if (sumario.length === 0) {
             console.log("creando la pelicula...");
             let nuevaPeli = new Pelicula(
+                undefined,
                 titulo.value,
                 descripcion.value,
                 imagen.value,
@@ -145,4 +147,9 @@ function crearPeli(){
     function limpiarFormularioPeliculas(){
         formularioPelicula.reset();
     }
+
+    window.borrarPelicula = (codigo)=>{
+      console.log(codigo, typeof codigo)
+    }
+    
     

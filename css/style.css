@@ -17,3 +17,8 @@ main{
     margin: auto;
     padding: 10px;
 }
+textarea {
+    height: 50px;
+    width: 100%;
+    resize: none;
+}
