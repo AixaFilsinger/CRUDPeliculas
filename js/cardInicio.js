@@ -10,6 +10,7 @@ if (!listapeliculas) {
   listapeliculas = JSON.parse(listapeliculas).map(
     (pelicula) =>
       new Pelicula(
+        pelicula.codigo,
         pelicula.titulo,
         pelicula.descripcion,
         pelicula.imagen,

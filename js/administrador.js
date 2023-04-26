@@ -67,23 +67,12 @@ function crearFila(pelicula, indice) {
     <td class="text-truncate">${pelicula.imagen}</td>
     <td>${pelicula.genero}</td>
     <td>
-        <button class="bi bi-pencil-square btn btn-warning" id="btnEditar"></button>
-        <button class="bi bi-x-square btn btn-danger" onclick="borrarPelicula('${pelicula.codigo}')"></button>
+    <button class="bi bi-pencil-square btn btn-warning" id="btnEditar" onclick="editarPelicula('${pelicula.codigo}')"></button>
+    <button class="bi bi-x-square btn btn-danger" onclick="borrarPelicula('${pelicula.codigo}')"></button>
     </td>
   </tr>`;
 }
 
-
-
-
-
-
-function crearPeli(){
-    // crear una nueva peli
-    let nuevaPeli = new Pelicula('Super mario','algo','url','aventura',2023, '2hs','EEUU','-');
-    console.log(nuevaPeli)
-    
-    }
 
     function mostrarModalPeli(){
         //abrir la ventana modal
@@ -140,6 +129,7 @@ function crearPeli(){
         }
        
     }
+
     function guardarEnLocalStorage(){
         localStorage.setItem('listapeliculas', JSON.stringify(listapeliculas)); //para objetos Publicos funciona
     }
@@ -148,33 +138,39 @@ function crearPeli(){
         formularioPelicula.reset();
     }
 
-    window.borrarPelicula = (codigo)=>{
-      Swal.fire({
-        title: '¿Esta seguro de borrar la pelicula?',
-        text: "No se puede revertir este proceso posteriomente",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Borrar',
-        cancelButtonText: 'Cancelar'
-      }).then((result) => {
-        console.log(result);
-        if (result.isConfirmed) {
-      console.log(codigo, typeof codigo)
-      //busco en el array de peliculas la peli que quiero borrar
+   // tarea agregar validaciones HTML
+
+
+  window.borrarPelicula = (codigo)=>{
+
+  Swal.fire({
+    title: '¿Esta seguro de borrar la pelicula?',
+    text: "No se puede revertir este proceso posteriomente",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Borrar',
+    cancelButtonText: 'Cancelar'
+  }).then((result) => {
+    console.log(result);
+    if (result.isConfirmed) {
+      //aqui hago todo lo necesario para borrar
+      console.log(codigo);
+      console.log('aqui borro la peli');
+      //busco en al array de peliculas la peli que quiero borrar
       let posicionPeli = listapeliculas.findIndex( pelicula => pelicula.codigo === codigo)
       console.log(posicionPeli);
       //borrar del array el objeto pelicula
-      listapeliculas.splice(posicionPeli, 1)
-      //igualar los datos del local storege
-     guardarEnLocalStorage();
+      listapeliculas.splice(posicionPeli,1)
+      //igual los datos del localstorage
+      guardarEnLocalStorage();
       //quitar la fila de la tabla
       let datosTablaPelicula = document.querySelector("tbody");
-      //console.log(datosTablaPelicula.children[posicionPeli])
+      // console.log(datosTablaPelicula.children[posicionPeli])
       datosTablaPelicula.removeChild(datosTablaPelicula.children[posicionPeli]);
     
-      //actualizar la fila de la tabla
+      //todo: actualizar la fila en la tabla
       Swal.fire(
         'Borramos la pelicula',
         'La pelicula seleccionada fue eliminada correctamente',
@@ -182,7 +178,26 @@ function crearPeli(){
       )
     }
   })
+}
 
- }
+
+   window.editarPelicula = (codigoUnico)=>{
+    //mostrar modal
+    let pelicula = listapeliculas.find(peli => peli.codigo === codigoUnico);
+    console.log(pelicula)
+    modalPelicula.show();
+    //completar los datos en el modal
+    codigo.value = pelicula.codigo;
+    titulo.value = pelicula.title;
+    descripcion.value = pelicula.descripcion;
+    imagen.value = pelicula.imagen;
+    genero.value = pelicula.genero;
+    anio.value = pelicula.anio;
+    duracion.value = pelicula.duracion;
+    pais.value = pelicula.pais;
+    reparto.value = pelicula.reparto;
+
+
+  }
     
     
