@@ -149,7 +149,40 @@ function crearPeli(){
     }
 
     window.borrarPelicula = (codigo)=>{
+      Swal.fire({
+        title: '¿Esta seguro de borrar la pelicula?',
+        text: "No se puede revertir este proceso posteriomente",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Borrar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        console.log(result);
+        if (result.isConfirmed) {
       console.log(codigo, typeof codigo)
+      //busco en el array de peliculas la peli que quiero borrar
+      let posicionPeli = listapeliculas.findIndex( pelicula => pelicula.codigo === codigo)
+      console.log(posicionPeli);
+      //borrar del array el objeto pelicula
+      listapeliculas.splice(posicionPeli, 1)
+      //igualar los datos del local storege
+     guardarEnLocalStorage();
+      //quitar la fila de la tabla
+      let datosTablaPelicula = document.querySelector("tbody");
+      //console.log(datosTablaPelicula.children[posicionPeli])
+      datosTablaPelicula.removeChild(datosTablaPelicula.children[posicionPeli]);
+    
+      //actualizar la fila de la tabla
+      Swal.fire(
+        'Borramos la pelicula',
+        'La pelicula seleccionada fue eliminada correctamente',
+        'success'
+      )
     }
+  })
+
+ }
     
     
